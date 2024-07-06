@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import org.testng.annotations.Test;
 
 
 @RunWith(Cucumber.class)
@@ -12,8 +13,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(features = "src/test/java/feature", glue = { "stepdefination", "helper" },
 
         tags = "@Reg", plugin = { "pretty", "html:target/htmlreport/test.html" })
-public class Runner{
-
+public class Runner {
 
 
 }

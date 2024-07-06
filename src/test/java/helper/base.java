@@ -1,17 +1,23 @@
 package helper;
 
+import com.beust.jcommander.Parameter;
 import io.cucumber.java.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,15 +26,22 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@RunWith(Parameterized.class)
 public class base {
     public static WebDriver driver;
     public static Properties prop;
     public static Process pro;
     public static ExecutorService executor;
+
+
+
+
 
 
     static {
@@ -71,18 +84,21 @@ public class base {
     @Before
     public void setup() throws MalformedURLException {
 
-        String browsername = prop.getProperty("browser");
-        if (browsername.equalsIgnoreCase("chrome")) {
 
-            WebDriverManager.chromedriver().setup();
 
-            driver= new ChromeDriver();
 
-        }else if(browsername.equalsIgnoreCase("firefox")) {
+        String browserName = prop.getProperty("browser");
+        if (browserName.equalsIgnoreCase("chrome")) {
+
+            driver = new RemoteWebDriver(new URL("http://localhost:4444"), new ChromeOptions());
+
+        }else if(browserName.equalsIgnoreCase("firefox")) {
             driver = new RemoteWebDriver(new URL("http://localhost:4444"), new FirefoxOptions());
-        }else if(browsername.equalsIgnoreCase("edge")) {
+        }else if(browserName.equalsIgnoreCase("edge")) {
             driver = new RemoteWebDriver(new URL("http://localhost:4444"), new EdgeOptions());
         }
+
+
 
         driver.get(prop.getProperty("url"));
         driver.manage().window().maximize();
