@@ -32,7 +32,7 @@ import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@RunWith(Parameterized.class)
+
 public class base {
     public static WebDriver driver;
     public static Properties prop;
