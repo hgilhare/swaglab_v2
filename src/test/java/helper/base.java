@@ -66,6 +66,8 @@ public class base {
     @BeforeAll
     public static void docker_grid_start() throws IOException, InterruptedException {
 
+        System.out.println("working");
+
 
 
 
@@ -107,6 +109,8 @@ public class base {
 
     @AfterAll
     public static void docker_grid_stop() throws IOException, InterruptedException {
+
+        System.out.println("finish");
 
 
         executor.shutdown();
