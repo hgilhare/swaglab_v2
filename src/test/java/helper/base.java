@@ -91,6 +91,7 @@ public class base {
 
         String browserName = prop.getProperty("browser");
         if (browserName.equalsIgnoreCase("chrome")) {
+            WebDriverManager.chromedriver().setup();
 
             driver = new RemoteWebDriver(new URL("http://localhost:4444"), new ChromeOptions());
 

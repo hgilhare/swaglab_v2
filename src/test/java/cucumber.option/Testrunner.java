@@ -14,5 +14,4 @@ import io.cucumber.junit.CucumberOptions;
         tags = "@Reg", plugin = { "pretty", "html:target/htmlreport/test.html" })
 public class Testrunner {
 
-
 }
