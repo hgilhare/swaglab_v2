@@ -1,6 +1,9 @@
 package helper;
 
 import com.beust.jcommander.Parameter;
+import com.google.cloud.functions.HttpFunction;
+import com.google.cloud.functions.HttpRequest;
+import com.google.cloud.functions.HttpResponse;
 import io.cucumber.java.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -33,11 +36,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-public class base {
+public class base implements HttpFunction {
     public static WebDriver driver;
     public static Properties prop;
     public static Process pro;
     public static ExecutorService executor;
+
+    static base b= new base();
 
 
 
@@ -64,9 +69,12 @@ public class base {
     }
 
     @BeforeAll
-    public static void docker_grid_start() throws IOException, InterruptedException {
+    public static void docker_grid_start(HttpRequest req,HttpResponse resp) throws Exception {
+        b.service(req, resp);
 
-        System.out.println("working");
+
+
+
 
 
 
@@ -89,18 +97,6 @@ public class base {
 
 
 
-        String browserName = prop.getProperty("browser");
-        if (browserName.equalsIgnoreCase("chrome")) {
-           ChromeOptions option =new ChromeOptions();
-           option.addArguments("--headless");
-
-            driver = new ChromeDriver(option);
-
-        }else if(browserName.equalsIgnoreCase("firefox")) {
-            driver = new RemoteWebDriver(new URL("http://localhost:4444"), new FirefoxOptions());
-        }else if(browserName.equalsIgnoreCase("edge")) {
-            driver = new RemoteWebDriver(new URL("http://localhost:4444"), new EdgeOptions());
-        }
 
 
 
@@ -112,7 +108,7 @@ public class base {
     @AfterAll
     public static void docker_grid_stop() throws IOException, InterruptedException {
 
-        System.out.println("finish");
+
 
 
 //        executor.shutdown();
@@ -213,4 +209,20 @@ public class base {
     }
 
 
+    @Override
+    public void service(HttpRequest httpRequest, HttpResponse httpResponse) throws Exception {
+        String browserName = prop.getProperty("browser");
+        if (browserName.equalsIgnoreCase("chrome")) {
+            ChromeOptions option =new ChromeOptions();
+            option.addArguments("--headless");
+
+            driver = new ChromeDriver(option);
+
+        }else if(browserName.equalsIgnoreCase("firefox")) {
+            driver = new RemoteWebDriver(new URL("http://localhost:4444"), new FirefoxOptions());
+        }else if(browserName.equalsIgnoreCase("edge")) {
+            driver = new RemoteWebDriver(new URL("http://localhost:4444"), new EdgeOptions());
+        }
+
+    }
 }
