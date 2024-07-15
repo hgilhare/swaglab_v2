@@ -3,6 +3,7 @@ package helper;
 import com.beust.jcommander.Parameter;
 import io.cucumber.java.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import net.rcarz.jiraclient.JiraException;
 import org.apache.commons.io.FileUtils;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -134,11 +135,20 @@ public class base {
     }
 
     @After
-    public void teardown(Scenario s) throws IOException, InterruptedException {
+    public void teardown(Scenario s) throws IOException, InterruptedException, JiraException {
         if (s.isFailed()) {
             TakesScreenshot t = (TakesScreenshot) driver;
             File src = t.getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(src, new File("screenshots/" + s.getName() + ".png"));
+
+            JiraServiceProvider jsp= new JiraServiceProvider("https://himanshu-gilhare-automation.atlassian.net/",
+                    "himanshugilhare08@gmail.com","ATATT3xFfGF0wSMafkE5nZYGTjv83MFQHKCM3rkwUVN-xU374j6ORLVvwupjKz9XHYFPGahb0PGJxtxHSZNzIWzSX6Z1fXvZtB68XwEcv-7L2kVOHTtyrdS3Cic0lvlEaZF75c6J4PVVGY3dlkP672rmR72S-QQvUfwY76gjxOahxNPefVNJuiI=E1503A98"
+            ,"JSA");
+
+            String sname=s.getName();
+            String issueSummary= sname+ "got faild due to some assertion error or exception";
+            String issueDescription= "this Issue has been caught by Automation";
+            jsp.CreateJiraTicket("Bug",issueSummary,issueDescription);
 
         }
 
