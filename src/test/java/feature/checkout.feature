@@ -1,4 +1,4 @@
-
+@Reg
 Feature: validating checkout functionality
 
 Scenario Outline: validating checkout fanctonality with valid credential
