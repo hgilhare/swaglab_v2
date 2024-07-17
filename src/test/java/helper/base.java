@@ -105,36 +105,19 @@ public class base {
 
         }else if(browserName.equalsIgnoreCase("firefox")) {
             MutableCapabilities capabilities = new MutableCapabilities();
-
             HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
-
             capabilities.setCapability("browserName", "Firefox");
-
             bstackOptions.put("os", "Windows");
-
             bstackOptions.put("osVersion", "11");
-
             bstackOptions.put("browserVersion", "latest");
-
             bstackOptions.put("seleniumVersion", "4.22.0");
-
             bstackOptions.put("projectName", "Himanshu-Browserstack");
-
             bstackOptions.put("buildName", "Build v2");
-
             bstackOptions.put("sessionName", "swaglab");
-
             bstackOptions.put("debug", "true");
-
             bstackOptions.put("networkLogs", "true");
-
             capabilities.setCapability("bstack:options", bstackOptions);
-
             String url="http://"+"himanshugilhare_v9TRrY"+":"+"uyt1osxQ37RpBemjpBme"+"@hub.browserstack.com/wd/hub/";
-
-
-
-
 
             driver = new RemoteWebDriver(new URL(url), capabilities);
         }else if(browserName.equalsIgnoreCase("edge")) {
@@ -170,21 +153,21 @@ public class base {
 
     @After
     public void teardown(Scenario s) throws IOException, InterruptedException, JiraException {
-//        if (s.isFailed()) {
-//            TakesScreenshot t = (TakesScreenshot) driver;
-//            File src = t.getScreenshotAs(OutputType.FILE);
-//            FileUtils.copyFile(src, new File("screenshots/" + s.getName() + ".png"));
+        if (s.isFailed()) {
+            TakesScreenshot t = (TakesScreenshot) driver;
+            File src = t.getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(src, new File("screenshots/" + s.getName() + ".png"));
 
-//            JiraServiceProvider jsp= new JiraServiceProvider("https://himanshu-gilhare-automation.atlassian.net/",
-//                    "himanshugilhare08@gmail.com","ATATT3xFfGF0wSMafkE5nZYGTjv83MFQHKCM3rkwUVN-xU374j6ORLVvwupjKz9XHYFPGahb0PGJxtxHSZNzIWzSX6Z1fXvZtB68XwEcv-7L2kVOHTtyrdS3Cic0lvlEaZF75c6J4PVVGY3dlkP672rmR72S-QQvUfwY76gjxOahxNPefVNJuiI=E1503A98"
-//            ,"JSA");
-//
-//            String sname=s.getName();
-//            String issueSummary= sname+ "got faild due to some assertion error or exception";
-//            String issueDescription= "this Issue has been caught by Automation";
-//            jsp.CreateJiraTicket("Bug",issueSummary,issueDescription);
+            JiraServiceProvider jsp= new JiraServiceProvider("https://himanshu-gilhare-automation.atlassian.net/",
+                    "himanshugilhare08@gmail.com","ATATT3xFfGF0wSMafkE5nZYGTjv83MFQHKCM3rkwUVN-xU374j6ORLVvwupjKz9XHYFPGahb0PGJxtxHSZNzIWzSX6Z1fXvZtB68XwEcv-7L2kVOHTtyrdS3Cic0lvlEaZF75c6J4PVVGY3dlkP672rmR72S-QQvUfwY76gjxOahxNPefVNJuiI=E1503A98"
+            ,"JSA");
 
-//        }
+            String sname=s.getName();
+            String issueSummary= sname+ "got faild due to some assertion error or exception";
+            String issueDescription= "this Issue has been caught by Automation";
+            jsp.CreateJiraTicket("Bug",issueSummary,issueDescription);
+
+        }
 
         driver.quit();
 
