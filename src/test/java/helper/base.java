@@ -158,14 +158,17 @@ public class base {
             File src = t.getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(src, new File("screenshots/" + s.getName() + ".png"));
 
+            String projectname="HA";
+            String issuetype="Bug";
+
             JiraServiceProvider jsp= new JiraServiceProvider("https://himanshu-gilhare-automation.atlassian.net/",
-                    "himanshugilhare08@gmail.com","ATATT3xFfGF0wSMafkE5nZYGTjv83MFQHKCM3rkwUVN-xU374j6ORLVvwupjKz9XHYFPGahb0PGJxtxHSZNzIWzSX6Z1fXvZtB68XwEcv-7L2kVOHTtyrdS3Cic0lvlEaZF75c6J4PVVGY3dlkP672rmR72S-QQvUfwY76gjxOahxNPefVNJuiI=E1503A98"
-            ,"JSA");
+                    "himanshugilhare08@gmail.com","ATATT3xFfGF0ko-xLBQynrwK5pYUb6hNZuOoeBBuhOTdEfXrrzsESMhMcolxzPHti05NDnD_zexO6V3Gae29bzzC8ExgURcYqIPr7YPee49iLHey7NZA38iqGspeNN1ygQ5k06NhMeYKdbCqNHxLZVTZObPBtCtgxW2G927g19IiXBssECM6hXI=C5F31B5D"
+            ,projectname);
 
             String sname=s.getName();
-            String issueSummary= sname+ "got faild due to some assertion error or exception";
+            String issueSummary= sname+ " got failed due to some assertion error or exception";
             String issueDescription= "this Issue has been caught by Automation";
-            jsp.CreateJiraTicket("Bug",issueSummary,issueDescription);
+            jsp.CreateJiraTicket(issuetype,issueSummary,issueDescription);
 
         }
 

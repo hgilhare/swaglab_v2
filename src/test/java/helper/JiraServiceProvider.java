@@ -22,7 +22,7 @@ public class JiraServiceProvider {
         fluentcreate.field(Field.ISSUE_TYPE,issuetype);
         fluentcreate.field(Field.DESCRIPTION,description);
         Issue newissue= fluentcreate.execute();
-        System.out.println("new issue has been created with Jira ID" + newissue);
+        System.out.println("new issue has been created with Jira ID " + newissue);
 
     }
 }
