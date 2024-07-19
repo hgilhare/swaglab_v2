@@ -17,7 +17,7 @@ public class checkoutpage extends base {
     public By checkoutbtn = By.cssSelector("button#checkout");
     public By continuebtn = By.cssSelector("input#continue");
     public By finishbtn = By.cssSelector("button#finish");
-    public By removebtn = By.cssSelector("button#remove-sauce-labs-backp");
+    public By removebtn = By.cssSelector("button#remove-sauce-labs-backpack");
 
     public void user_click_on_add_to_cart_button() {
 
