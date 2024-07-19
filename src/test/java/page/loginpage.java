@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 public class loginpage extends base {
 
-    public By usrnme= By.cssSelector("input#user-name");
+    public By usrnme= By.cssSelector("input#user-nam");
     public By pwd = By.cssSelector("input#password");
     public By loginbtn= By.cssSelector("input#login-button");
 

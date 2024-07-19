@@ -3,6 +3,7 @@ package helper;
 import com.beust.jcommander.Parameter;
 import io.cucumber.java.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Allure;
 import net.rcarz.jiraclient.JiraException;
 import org.apache.commons.io.FileUtils;
 import org.junit.runner.RunWith;
@@ -21,10 +22,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Parameters;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -156,13 +154,16 @@ public class base {
         if (s.isFailed()) {
             TakesScreenshot t = (TakesScreenshot) driver;
             File src = t.getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(src, new File("screenshots/" + s.getName() + ".png"));
+            byte[] src_allure=t.getScreenshotAs(OutputType.BYTES);
+//            FileUtils.copyFile(src, new File("screenshots/" + s.getName() + ".png"));
+            Allure.addAttachment(s.getName(), new ByteArrayInputStream(src_allure));
 
             String projectname="HA";
             String issuetype="Bug";
+            String token="ATATT3xFfGF0LuaF4jM-NUIGb1UNOGwlMTcLGrSky2y-15sMIvmkjcZ3iirzVs_oZpDJF4-3iqmcjKqexv4drXP6gW8M5xYW81ZcvPLni746Sn1PQio7RWBHShdlojGA2grF9lh1OrlXvfKwIUI26TE1VRxtUsiCAL-NGOozBlEXsLvnmYYwJ1g=023D6515";
 
             JiraServiceProvider jsp= new JiraServiceProvider("https://himanshu-gilhare-automation.atlassian.net/",
-                    "himanshugilhare08@gmail.com","ATATT3xFfGF0ko-xLBQynrwK5pYUb6hNZuOoeBBuhOTdEfXrrzsESMhMcolxzPHti05NDnD_zexO6V3Gae29bzzC8ExgURcYqIPr7YPee49iLHey7NZA38iqGspeNN1ygQ5k06NhMeYKdbCqNHxLZVTZObPBtCtgxW2G927g19IiXBssECM6hXI=C5F31B5D"
+                    "himanshugilhare08@gmail.com",token
             ,projectname);
 
             String sname=s.getName();
