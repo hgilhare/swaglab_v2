@@ -92,12 +92,20 @@ public class base {
 
         String browserName = prop.getProperty("browser");
         if (browserName.equalsIgnoreCase("chrome")) {
-            ChromeOptions option =new ChromeOptions();
-            option.addArguments("--headless");
-            option.addArguments("--no-sandbox");
-            option.addArguments("--disable-dev-shm-usag");
+            ChromeOptions options =new ChromeOptions();
+            options.addArguments("--headless");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--window-size=1920,1080");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--proxy-server='direct://'");
+            options.addArguments("--proxy-bypass-list=*");
+            options.addArguments("--start-maximized");
+            options.addArguments("--disable-infobars");
 
-            driver = new ChromeDriver(option);
+            driver = new ChromeDriver(options);
 
 
 
