@@ -1,5 +1,8 @@
 pipeline {
     agent any
+     tools{
+           maven "MAVEN_HOME"
+     }
     environment {
         // Set your Slack token
         SLACK_BOT_TOKEN_1= "xoxb-7441264142710-7912860708753-rM7kdCH31Lijw0W0DzV9VZe4"
