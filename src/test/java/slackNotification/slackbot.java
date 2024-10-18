@@ -22,6 +22,7 @@ public class slackbot {
     public static void slack() {
         System.out.println("Slack Bot Token: " + SLACK_BOT_TOKEN);
         Slack slack = Slack.getInstance();
+        System.out.println("working");
 
         try {
             // Test if the token is valid
