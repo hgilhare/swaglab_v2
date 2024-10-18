@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    environment {
+        // Set your Slack token
+        SLACK_BOT_TOKEN_1= ""
+    }
+    stages {
+
+        stage('Build') {
+            steps {
+                // Your build steps go here
+                echo 'Building...'
+                Example: sh 'mvn clean test -Dtest=Testrunner'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Your test steps go here
+                echo 'Running tests...'
+                Example: sh 'mvn test -Dtest=slackbot'
+            }
+        }
+
+
+    }
+
+}
