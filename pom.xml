@@ -94,6 +94,12 @@
       <version>4.24.0</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.slack.api</groupId>
+      <artifactId>slack-api-client</artifactId>
+      <version>1.27.0</version> <!-- or a more recent version -->
+    </dependency>
+
 
 
   </dependencies>
