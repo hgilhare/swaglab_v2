@@ -93,7 +93,13 @@
       <artifactId>selenium-devtools-v128</artifactId>
       <version>4.24.0</version>
     </dependency>
-
+    <!-- Source: https://mvnrepository.com/artifact/com.microsoft.playwright/playwright -->
+    <dependency>
+      <groupId>com.microsoft.playwright</groupId>
+      <artifactId>playwright</artifactId>
+      <version>1.62.0</version>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>com.slack.api</groupId>
       <artifactId>slack-api-client</artifactId>
