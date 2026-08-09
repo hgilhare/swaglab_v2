@@ -1,4 +1,4 @@
-@Reg
+@Reg @test
 Feature: validating home page
 
   Scenario: validating filter with Z to A
