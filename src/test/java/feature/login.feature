@@ -1,4 +1,4 @@
-@Reg
+@test
 Feature: Validate login functionality
 
   Scenario: verify successful login with valid credential
