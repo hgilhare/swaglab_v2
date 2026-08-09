@@ -127,7 +127,7 @@ public class base {
 
             driver = new RemoteWebDriver(new URL(url), capabilities);
         }else if(browserName.equalsIgnoreCase("edge")) {
-            driver = new RemoteWebDriver(new URL("http://localhost:4444"), new EdgeOptions());
+            driver = new RemoteWebDriver(new URL("http://192.168.30.183:4444"), new EdgeOptions());
         }
 
 
