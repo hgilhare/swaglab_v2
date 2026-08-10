@@ -90,7 +90,7 @@ public class base {
 
 
 
-        String browserName = prop.getProperty("browser");
+        String browserName = System.getProperty("browser");
         if (browserName.equalsIgnoreCase("chrome")) {
             ChromeOptions options =new ChromeOptions();
             options.addArguments("--headless");
