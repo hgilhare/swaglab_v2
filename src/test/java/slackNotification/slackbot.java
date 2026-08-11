@@ -6,7 +6,8 @@ import com.slack.api.methods.request.auth.AuthTestRequest;
 import com.slack.api.methods.request.files.FilesUploadV2Request;
 import com.slack.api.methods.response.auth.AuthTestResponse;
 import com.slack.api.methods.response.files.FilesUploadV2Response;
-import org.testng.annotations.Test;
+import org.junit.Test;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class slackbot {
     private static final Logger LOGGER = Logger.getLogger(slackbot.class.getName());
     private static final String SLACK_BOT_TOKEN = System.getenv("SLACK_BOT_TOKEN_1");
     @Test
-    public static void slack() {
+    public  void slack() {
         System.out.println("Slack Bot Token: " + SLACK_BOT_TOKEN);
         Slack slack = Slack.getInstance();
         System.out.println("working");

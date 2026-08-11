@@ -1,5 +1,5 @@
 package helper;
-;
+
 import net.rcarz.jiraclient.*;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 
