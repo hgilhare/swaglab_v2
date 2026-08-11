@@ -1,6 +1,6 @@
 package helper;
 
-import com.beust.jcommander.Parameter;
+
 import io.cucumber.java.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
@@ -20,7 +20,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Parameters;
+
 
 import java.io.*;
 import java.net.MalformedURLException;
